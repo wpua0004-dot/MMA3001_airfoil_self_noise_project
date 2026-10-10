@@ -1,6 +1,5 @@
 # MMA3001_airfoil_self_noise_project
 
-# Airfoil Self-Noise Machine Learning Project
 Predicts acoustic performance of airfoils using Linear Regression and MLPs.
 
 ## How to Run
