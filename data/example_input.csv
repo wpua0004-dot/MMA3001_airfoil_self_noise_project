@@ -1,0 +1,6 @@
+Frequency_Hz,Angle_of_attack_deg,Chord_length_m,Free_stream_velocity_m/s,Suction_side_displacement_thickness_m
+800,0.0,0.3048,71.3,0.00266337
+1000,0.0,0.3048,71.3,0.00266337
+1250,0.0,0.3048,71.3,0.00266337
+1600,0.0,0.3048,71.3,0.00266337
+2000,0.0,0.3048,71.3,0.00266337

@@ -1,0 +1,6 @@
+Frequency_Hz,Angle_of_attack_deg,Chord_length_m,Free_stream_velocity_m/s,Suction_side_displacement_thickness_m,Predicted_SPL_dB,Outside_training_range
+800,0.0,0.3048,71.3,0.00266337,132.17426043464073,False
+1000,0.0,0.3048,71.3,0.00266337,131.3656239496361,False
+1250,0.0,0.3048,71.3,0.00266337,130.35482834338035,False
+1600,0.0,0.3048,71.3,0.00266337,129.2734581080653,False
+2000,0.0,0.3048,71.3,0.00266337,128.0779311561527,False
