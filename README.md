@@ -118,7 +118,7 @@ cd notebooks
 pdoc airfoil_utils workflow -o ../docs
 ```
 
-## Method in brief
+## Analysis Framework
 
 - **Data:** 1,503 NASA wind-tunnel measurements (UCI Airfoil Self-Noise).
 - **Group-aware splitting:** rows from the same airfoil setup are strongly
