@@ -1,8 +1,5 @@
 # Airfoil Self-Noise Prediction (MMA3001)
 
-[Uploading 2493e632-29cb-4e69-992e-3e637616f58a.png…]()
-
-
 **Goal:** Predicts the scaled sound pressure level (dB) of a NACA 0012 airfoil from five
 wind-tunnel inputs, and tests whether a neural network regression is worth using over a
 mean baseline and linear regression for higher accuracy.
