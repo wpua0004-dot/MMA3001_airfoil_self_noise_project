@@ -1,12 +1,13 @@
 # Airfoil Self-Noise Prediction (MMA3001)
 
-Predicts the scaled sound pressure level (dB) of a NACA 0012 airfoil from five
-wind-tunnel inputs, and tests whether a neural network is worth using over a
-mean baseline and linear regression.
+![Uploading 2493e632-29cb-4e69-992e-3e637616f58a.png…]()
 
-**Result:** a scaled MLP (one hidden layer, 50 neurons) reaches a test RMSE of
-3.96 dB and R² of 0.68 on airfoil setups it has never seen, about 20% lower
-error than linear regression.
+**Goal:** Predicts the scaled sound pressure level (dB) of a NACA 0012 airfoil from five
+wind-tunnel inputs, and tests whether a neural network regression is worth using over a
+mean baseline and linear regression for higher accuracy.
+
+**Result:** neural network regression with scaled MLP (one hidden layer, 50 neurons) reaches a test RMSE of
+3.96 dB and R² of 0.68 on airfoil setups it has never seen, accuracy of 20% higher than linear regression.
 
 ## Contents
 - [Results](#results)
@@ -26,11 +27,6 @@ Held-out test set (20% of airfoil setups, never used for tuning):
 | Mean baseline | 5.68 | 7.15 | -0.05 |
 | Linear regression | 3.69 | 4.98 | 0.49 |
 | **Scaled MLP (width 50)** | **3.04** | **3.96** | **0.68** |
-
-![Validation RMSE against hidden layer width](results/figures/figure_6.1_rmse_vs_width.png)
-
-The MLP is about 60 times more expensive per prediction than linear regression
-(600 vs 10 FLOPs) and much slower to train, so the accuracy gain comes at a cost.
 
 ## Quick start
 
@@ -85,7 +81,6 @@ docs/                  generated HTML documentation
 Reproduces everything in the report: data checks, the four-method comparison,
 10-fold group cross-validation, the width sweep and the final test.
 Run all cells from top to bottom. Figures are saved to `results/figures/`.
-The width sweep trains many models, so it is the slowest part.
 
 ### 2. Shared code: `notebooks/airfoil_utils.py`
 The building blocks used by everything else. Not run directly; imported by the
@@ -135,7 +130,6 @@ pdoc airfoil_utils workflow -o ../docs
 - **Tuning:** hidden layer width chosen by group cross-validation; 50 was chosen
   over 100 for similar accuracy at about half the cost.
 - **Cost:** parameters, FLOPs, training time and prediction time are reported.
-- **Reproducibility:** all random seeds are fixed at 42.
 
 ## Limitations
 
@@ -151,3 +145,5 @@ T. Brooks, D. Pope and M. Marcolini, "Airfoil Self-Noise," UCI Machine Learning
 Repository, 1989. https://doi.org/10.24432/C5VW2C
 
 Released under the license in [LICENSE](LICENSE).
+
+_The content is AI-generated, investigated by author._
