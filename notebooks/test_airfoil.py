@@ -6,7 +6,6 @@ import pytest
 
 from airfoil_utils import (
     FEATURE_COLUMNS,
-    GROUP_COLUMNS,
     build_models,
     make_final_model,
     mlp_parameters,
@@ -61,15 +60,21 @@ def test_validate_check_3_rejects_missing_values():
     with pytest.raises(ValueError, match="Check 3"):
         validate_input_data(bad)
 
+def test_validate_check_4_rejects_infinite_values():
+    """Check the result if a value is infinite."""
+    bad = good_inputs()
+    bad.iloc[1, 2] = np.inf
+    with pytest.raises(ValueError, match="Check 4"):
+        validate_input_data(bad)
 
-def test_validate_check_4_rejects_duplicated_rows():
+def test_validate_check_5_rejects_duplicated_rows():
     """Check the result if there's duplicated rows."""
     bad = pd.concat([good_inputs(), good_inputs().iloc[[0]]], ignore_index=True)
     with pytest.raises(ValueError, match="Check 4"):
         validate_input_data(bad)
 
 
-def test_validate_check_5_rejects_negative_values():
+def test_validate_check_6_rejects_negative_values():
     """Check the result if a chord length is negative."""
     bad = good_inputs()
     bad.loc[0, "Chord_length_m"] = -1.0

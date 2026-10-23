@@ -100,8 +100,9 @@ def validate_input_data(df):
     1. Row counts: the five input columns must exist and there must be rows.
     2. Data type: the five input values must be numbers (floats).
     3. Missing values: there must be none.
-    4. Duplicated rows: there must be none.
-    5. Valid ranges: frequency, chord length, free-stream velocity, suction side
+    4. Infinite values: there must be none.
+    5. Duplicated rows: there must be none.
+    6. Valid ranges: frequency, chord length, free-stream velocity, suction side
        displacement thickness (and the sound pressure level, if it is in the
        data) must be at least zero. 
 
@@ -140,13 +141,17 @@ def validate_input_data(df):
     # Check 3: missing values
     if data.isnull().sum().sum() > 0:
         raise ValueError("Check 3 failed: the data contains missing (NaN) values.")
+    
+    # Check 4: infinite values
+    if np.isinf(data).sum().sum() > 0:
+        raise ValueError("Check 4 failed: the data contains infinite values.")
 
-    # Check 4: duplicated rows
+    # Check 5: duplicated rows
     n_duplicates = data.duplicated().sum()
     if n_duplicates > 0:
         raise ValueError(f"Check 4 failed: the data contains {n_duplicates} duplicated row(s).")
 
-    # Check 5: valid ranges (minimum at least zero; angle of attack is not checked)
+    # Check 6: valid ranges (minimum at least zero; angle of attack is not checked)
     for column in columns:
         if column != "Angle_of_attack_deg" and data[column].min() < 0:
             raise ValueError(f"Check 5 failed: {column} contains negative values.")
